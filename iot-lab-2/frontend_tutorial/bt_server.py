@@ -1,10 +1,10 @@
-import bluetooth
+import socket
 
-hostMACAddress = "DC:A6:32:80:7D:87" # The address of Raspberry PI Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
-port = 0
+hostMACAddress = "E4:5F:01:C6:0B:3A" # The address of Raspberry PI Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
+port = 1
 backlog = 1
 size = 1024
-s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
 s.bind((hostMACAddress, port))
 s.listen(backlog)
 print("listening on port ", port)
