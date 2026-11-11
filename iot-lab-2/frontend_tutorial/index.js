@@ -1,5 +1,21 @@
 var server_port = 65432;
-var server_addr = "192.168.3.49";   // the IP address of your Raspberry PI
+var server_addr = "192.168.1.179";   // the IP address of your Raspberry PI
+
+function to_server(name){
+    fetch(`http://${server_addr}:5000/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(name)
+    })
+    .then(res => res.json())
+    .then(data => {
+
+    document.getElementById("greet_from_server").innerHTML =
+    data.server_greet;
+        console.log(data.server_greet);
+    })
+    .catch(err => console.log("flask error: " + err));
+}
 
 function client(){
     

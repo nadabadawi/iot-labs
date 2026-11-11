@@ -1,8 +1,8 @@
-import socket
+import bluetooth
 
 host = "E4:5F:01:C6:0B:3A" # The address of Raspberry PI Bluetooth adapter on the server.
 port = 1
-sock = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
+sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
 sock.connect((host, port))
 while 1:
     text = input("Enter your message: ") # Note change to the old (Python 2) raw_input
